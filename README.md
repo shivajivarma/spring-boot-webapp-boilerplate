@@ -1,9 +1,13 @@
 # Spring Boot Webapp Boilerplate
 Spring Boot based Web Application boilerplate, with stateless authentication using JWT.
 
-## Steup
+## Setup
 
-Install MySQL and create `boilerplate` schema.
+Install MySQL and create `boilerplate` schema.  
+Clone the repository.
+  ```cmd
+  git clone https://github.com/shivajivarma/spring-boot-webapp-boilerplate
+  ```
 
 ## Run
 
