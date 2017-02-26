@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Boilerplate</h1>
+
+<p>Your application is running.</p>
+<hr>
+
+
+<h4>Login:</h4>
+<label>
+    Username: <input type="text" id="username">
+</label>
+<br>
+<br>
+<label>
+    Password: <input type="password" id="password">
+</label>
+<br><br>
+<button id="login-btn">Submit</button>
+<b id="message"></b>
+
+
+<p><b>Admin (username: admin, password: admin)</b></p>
+<p><b>User (username: user, password: user)</b></p>
+
+<hr>
+
+
+
+<p>Access Admin Api: <button id="get-admin-data-btn">Get</button> (Once you login as admin you can click here can get success message)</p>
+
+
+
+<p>Access User Api: <button id="get-user-data-btn">Get</button> (Once you login as user you can click here can get success message)</p>
+
+
+<h4>Output :</h4>
+<textarea id="output" style="height:200px; width:100%">
+
+</textarea>
+
+<script src="assets/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    (function(){
+        var tokenHeader;
+
+        var $username = $('#username');
+        var $password = $('#password');
+        var $output = $('#output');
+        var $message = $('#message');
+
+        function fetch(url){
+            $.ajax({
+                url: url,
+                data: {},
+                type: "GET",
+                beforeSend: function(xhr){xhr.setRequestHeader('x-auth-token', tokenHeader);},
+                success: function(data) {
+                    $output.val(JSON.stringify(data, null, 4))
+                },
+                error: function(data){
+                    $output.val(JSON.stringify(data.responseJSON, null, 4));
+                }
+            });
+        }
+
+        $(document).ready(function(){
+            $('#get-admin-data-btn').on('click', function(){
+                fetch("/api/sample/admin");
+            });
+
+            $('#get-user-data-btn').on('click', function(){
+                fetch("/api/sample/user");
+            });
+
+            $('#login-btn').on('click', function(){
+                $.ajax({
+                    url: "/auth",
+                    data: JSON.stringify({username: $username.val(), password: $password.val()}),
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    beforeSend: function(xhr){xhr.setRequestHeader('x-auth-token', tokenHeader);},
+                    success: function(data) {
+                        $username.val('');
+                        $password.val('');
+                        $message.text("Logged in, now click on both the get button and check the output");
+                        tokenHeader = data.token;
+                        $output.val(JSON.stringify(data, null, 4));
+                    },
+                    error: function(data){
+                        $output.val(JSON.stringify(data.responseJSON, null, 4));
+                    }
+                })
+            });
+
+        });
+    })();
+
+</script>
+
+</body>
+</html>
