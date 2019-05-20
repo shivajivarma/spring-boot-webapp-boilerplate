@@ -12,7 +12,6 @@ buildscript {
     }
 }
 
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -33,7 +32,7 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    runtime('mysql:mysql-connector-java')
+    runtime('mysql:mysql-connector-java:5.1.45')
     compile('org.springframework.boot:spring-boot-starter-security')
 
     compile('io.jsonwebtoken:jjwt:0.7.0')
