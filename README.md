@@ -3,7 +3,9 @@ Spring Boot based Web Application boilerplate, with stateless authentication usi
 
 ## Setup
 
-Install MySQL and create `boilerplate` schema.  
+* Install MySQL and create `boilerplate` schema.  
+* Install Gradle
+
 Clone the repository.
   ```cmd
   git clone https://github.com/shivajivarma/spring-boot-webapp-boilerplate
