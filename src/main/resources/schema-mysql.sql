@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `USER`
+CREATE TABLE IF NOT EXISTS `boilerplate`.`USER`
 (
 id          INT NOT NULL auto_increment,
 authorities VARCHAR(255),

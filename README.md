@@ -3,8 +3,20 @@ Spring Boot based Web Application boilerplate, with stateless authentication usi
 
 ## Setup
 
-* Install MySQL and create `boilerplate` schema.  
-* Install Gradle
+* Install MySQL  
+* Create database with name `boilerplate`
+* Run the below script to create USER table.
+```mysql
+CREATE TABLE IF NOT EXISTS `boilerplate`.`USER`
+(
+id          INT NOT NULL auto_increment,
+authorities VARCHAR(255),
+password    VARCHAR(255),
+username    VARCHAR(255),
+PRIMARY KEY (id)
+)
+auto_increment=1; 
+```
 
 Clone the repository.
   ```cmd
@@ -16,7 +28,7 @@ Clone the repository.
 To run the demo application just execute this command in the root directory:
 
 ```cmd
-gradle bootRun
+gradlew.bat bootRun
 ```
 
 And navigate to [http://localhost:8080](http://localhost:8080) to check the demo. 
