@@ -25,7 +25,7 @@ Clone the repository.
 
 ## Run
 
-To run the demo application just execute this command in the root directory:
+Run the boilerplate application, by execute below command in the project root directory:
 
 ```cmd
 gradlew.bat bootRun
